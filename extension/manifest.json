@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "ErrorSnap Gen AI",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting", "http://127.0.0.1:5000/*"],
+  "host_permissions": ["<all_urls>", "http://127.0.0.1:5000/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["html2canvas.min.js", "content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://127.0.0.1:5000"
+  }
+}
